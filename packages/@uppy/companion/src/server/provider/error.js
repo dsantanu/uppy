@@ -68,8 +68,12 @@ function errorToResponse(err) {
     return { code: 401, json: { message: err.message } }
   }
 
+  //if (err?.name === 'ValidationError') {
+  //  return { code: 400, json: { message: err.message } }
+  //}
   if (err?.name === 'ValidationError') {
-    return { code: 400, json: { message: err.message } }
+    const code = err.message === 'maxFileSize exceeded' ? 422 : 400
+    return { code, json: { message: err.message } }
   }
 
   if (err?.name === 'ProviderUserError') {
