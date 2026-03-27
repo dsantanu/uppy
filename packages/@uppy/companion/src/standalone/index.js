@@ -138,7 +138,6 @@ export default function server(inputCompanionOptions) {
     sessionOptions.cookie = {
       domain: process.env.COMPANION_COOKIE_DOMAIN,
       maxAge: 24 * 60 * 60 * 1000, // 1 day
-      sameSite: 'none',  // ← added this
     }
   }
 
